@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,16 @@ public class BuildingTypeSelectUI : MonoBehaviour
             BuildingManager.Instance.SetActiveBuildingType(null);
         });
 
+        MouseEnterExitEvents mouseEnterExitEvents = arrowBtn.GetComponent<MouseEnterExitEvents>();
+        mouseEnterExitEvents.OnMouseEnter += (object sender, EventArgs e) =>
+        {
+            TooltipUI.Instance.Show("Arrow");
+        };
+        mouseEnterExitEvents.OnMouseExit += (object sender, EventArgs e) =>
+        {
+            TooltipUI.Instance.Hide();
+        };
+
         index++;
 
         foreach (BuildingTypeSO buildingType in buildingTypeList.list)
@@ -53,6 +64,16 @@ public class BuildingTypeSelectUI : MonoBehaviour
             {
                 BuildingManager.Instance.SetActiveBuildingType(buildingType);
             });
+
+            mouseEnterExitEvents = btnTransform.GetComponent<MouseEnterExitEvents>();
+            mouseEnterExitEvents.OnMouseEnter += (object sender, EventArgs e) =>
+            {
+                TooltipUI.Instance.Show(buildingType.nameString +"\n" + buildingType.GetConstructionResourceCostString());
+            };
+            mouseEnterExitEvents.OnMouseExit += (object sender, EventArgs e) =>
+            {
+                TooltipUI.Instance.Hide();
+            };
 
             btnTransformDictionary[buildingType] = btnTransform;
 

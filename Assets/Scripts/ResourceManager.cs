@@ -43,4 +43,25 @@ public class ResourceManager : MonoBehaviour
     public int GetResourceAmount(ResourceTypeSO resourceType){ 
         return resoureceAmountDictionary[resourceType];
     }
+    //tinh tien co kha nang mua hay ko
+    public bool CanAfford(ResourceAmount[] resourceAmountArray) {
+        foreach (ResourceAmount resourceAmount in resourceAmountArray) {
+            if (GetResourceAmount(resourceAmount.resourceType) >= resourceAmount.amount)
+            {
+
+            }
+            else {
+                return false;
+            }
+        }
+        return true;
+    }
+    //mua roi tru vao tai khoan chinh
+    public void SpendResources(ResourceAmount[] resourceAmountArray)
+    {
+        foreach (ResourceAmount resourceAmount in resourceAmountArray)
+        {
+            resoureceAmountDictionary[resourceAmount.resourceType] -= resourceAmount.amount;       
+        }
+    }
 }
