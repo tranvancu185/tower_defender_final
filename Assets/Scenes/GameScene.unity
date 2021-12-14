@@ -152,6 +152,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed6e32aa9ae3274c93c1ac594081d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingResourceAmountList:
+  - resourceType: {fileID: 11400000, guid: 256544553140e104db496ef1b75952ec, type: 2}
+    amount: 100
+  - resourceType: {fileID: 11400000, guid: 2579d6f0dac62154393f8dcf9f98ebb2, type: 2}
+    amount: 100
+  - resourceType: {fileID: 11400000, guid: 6bef0549d3719724693f643fbdc33cae, type: 2}
+    amount: 100
 --- !u!4 &35857961
 Transform:
   m_ObjectHideFlags: 0
@@ -756,7 +763,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 29.99823
+  orthographic size: 10.00001
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1338,6 +1345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7398b71b5cc14aa44aba89803a0d0966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hqBuilding: {fileID: 1422584512}
 --- !u!4 &899143125
 Transform:
   m_ObjectHideFlags: 0
@@ -1898,7 +1906,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1201064432}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 29.99823
+    OrthographicSize: 10.00001
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2607,6 +2615,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21cb501abc7541840b9115feb55eb427, type: 3}
+--- !u!114 &1422584512 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7799934290828596865, guid: 21cb501abc7541840b9115feb55eb427, type: 3}
+  m_PrefabInstance: {fileID: 1422584511}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 206ec7e413010ab44bf1016b870d396d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1424434331
 GameObject:
   m_ObjectHideFlags: 0
