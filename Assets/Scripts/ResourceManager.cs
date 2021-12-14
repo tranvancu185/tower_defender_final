@@ -43,7 +43,7 @@ public class ResourceManager : MonoBehaviour
     public int GetResourceAmount(ResourceTypeSO resourceType){ 
         return resoureceAmountDictionary[resourceType];
     }
-
+    //Price that we can buy or not
     public bool CanAfford(ResourceAmount[] resourceAmountArray) {
         foreach (ResourceAmount resourceAmount in resourceAmountArray) {
             if (GetResourceAmount(resourceAmount.resourceType) >= resourceAmount.amount)
