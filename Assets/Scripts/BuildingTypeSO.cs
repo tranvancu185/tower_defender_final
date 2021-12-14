@@ -17,6 +17,8 @@ public class BuildingTypeSO : ScriptableObject {
 
     public ResourceAmount[] constructionResourceCostArray;
 
+    public int healthAmountMax;
+
     public string GetConstructionResourceCostString() {
         string str = "";
         foreach (ResourceAmount resourceAmount in constructionResourceCostArray) {
