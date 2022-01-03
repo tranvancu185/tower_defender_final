@@ -30,8 +30,12 @@ public class BuildingManager : MonoBehaviour {
 
     private void Start() {
         mainCamera = Camera.main;
-
+        hqBuilding.GetComponent<HealthSystem>().OnDied += HQ_Ondied;
         
+    }
+
+    private void HQ_Ondied(object sender, EventArgs e) {
+        GameOverUI.Instance.Show();
     }
 
     // Update is called once per frame
@@ -44,7 +48,8 @@ public class BuildingManager : MonoBehaviour {
                     if (ResourceManager.Instance.CanAfford(activeBuildingType.constructionResourceCostArray))
                     {
                         ResourceManager.Instance.SpendResources(activeBuildingType.constructionResourceCostArray);
-                        Instantiate(activeBuildingType.prefab, UtilsClass.GetMouseWolrdPosition(), Quaternion.identity);
+                        //Instantiate(activeBuildingType.prefab, UtilsClass.GetMouseWolrdPosition(), Quaternion.identity);
+                        BuildingConstruction.Create(UtilsClass.GetMouseWolrdPosition(), activeBuildingType);
                     }
                     else
                     {
