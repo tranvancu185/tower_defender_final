@@ -6,6 +6,7 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnDamaged;
+    public event EventHandler OnHealed;
     public event EventHandler OnDied;
     [SerializeField] private int healthAmountMax;
     private int healthAmount;
@@ -25,12 +26,28 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    public void Heal(int healAmount) {
+        healAmount += healAmount;
+        healAmount = Mathf.Clamp(healAmount, 0, healthAmountMax);
+
+        OnHealed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void HealFull() {
+        healthAmount = healthAmountMax;
+
+        OnHealed?.Invoke(this, EventArgs.Empty);
+    }
     public bool IsDead(){
         return healthAmount == 0;
     }
 
     public int GetHealthAmount(){
         return healthAmount;
+    }
+
+    public int GetHealthAmountMax(){
+        return healthAmountMax;
     }
 
     public float GetHealthAmountNormalized(){
