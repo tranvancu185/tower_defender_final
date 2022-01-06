@@ -31,10 +31,15 @@ public class Enemy : MonoBehaviour
 
     private void HealthSystem_OnDamaged(object sender, System.EventArgs e){
         SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyHit);
+        CinemachineSnake.Instance.SnakeCamera(5f, .1f);
+        ChromaticAberrationEffect.Instance.SetWeight(.5f);
     }
 
     private void HealthSystem_OnDied(object sender, System.EventArgs e){
         SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
+        CinemachineSnake.Instance.SnakeCamera(7f, .15f);
+        ChromaticAberrationEffect.Instance.SetWeight(.5f);
+        Instantiate(Resources.Load<Transform>("pfEnemyDieParticles"), transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     private void Update()
@@ -47,7 +52,7 @@ public class Enemy : MonoBehaviour
         if (building != null){
             HealthSystem healthSystem = building.GetComponent<HealthSystem>();
             healthSystem.Damage(10);
-            Destroy(gameObject);
+            this.healthSystem.Damage(999);
         }    
     }
 
